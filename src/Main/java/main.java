@@ -72,6 +72,7 @@ import java.util.Scanner;
                 case "5":
                     r = false;
                     break;
+                case "6": int cont =0;
 
                 default:
                     System.out.println("Opción no válida.");
@@ -84,17 +85,11 @@ import java.util.Scanner;
 
 class CreateLista {
 
-    // Constructor que toma una lista y agrega nodos
     public CreateLista(Lista lista) {
         // Crear algunos pacientes de ejemplo y asignarlos a la lista
-        Nodo paciente1 = new Nodo("Juan Pérez", 123456789, 1010);
+        Nodo paciente1 = new Nodo("", 0, 0);
         lista.ingresarDato(paciente1);
 
-        Nodo paciente2 = new Nodo("Ana Gómez", 987654321, 2020);
-        lista.ingresarDato(paciente2);
-
-        Nodo paciente3 = new Nodo("Carlos Rodríguez", 456789123, 3030);
-        lista.ingresarDato(paciente3);
 
         System.out.println("Lista de pacientes creada con éxito.");
     }
@@ -106,7 +101,7 @@ class Nodo {
     int cedula;
     Nodo sig; // Apunta al siguiente nodo
 
-    // Constructor para Nodo
+
     public Nodo(String nombre, int numeroTel, int cedula) {
         this.nombre = nombre;
         this.numeroTel = numeroTel;
@@ -118,7 +113,7 @@ class Lista {
     Nodo primero;
     Nodo ultimo;
 
-    // Método para insertar un nodo con los datos de un paciente
+
     public void ingresarDato(Nodo nuevo) {
         nuevo.sig = null;
 
@@ -131,7 +126,7 @@ class Lista {
         }
     }
 
-    // Método para insertar un paciente con datos (nombre, teléfono, cédula)
+
     public void ingresarDato(String nombre, int numeroTel, int cedula) {
         Nodo nuevo = new Nodo(nombre, numeroTel, cedula);
         nuevo.sig = null;
@@ -145,7 +140,7 @@ class Lista {
         }
     }
 
-    // Desplegar la lista de pacientes
+
     public void desplegar() {
         if (primero == null) {
             System.out.println("La lista está vacía.");
@@ -158,7 +153,7 @@ class Lista {
         }
     }
 
-    // Ordenar la lista usando Bubble Sort
+    // Ordeno  la lista usando un  Bubble Sort
     public void ordenarLista() {
         if (primero == null || primero.sig == null) return;
 
@@ -189,7 +184,7 @@ class Lista {
         } while (huboIntercambio);
     }
 
-    // Buscar y modificar un valor en la lista
+//funcion para buscar y modificar un dato ,* el buscar sirve para cualquir otra funcion*
     public boolean buscarYModificar(int buscar, int nuevoValor) {
         Nodo actual = primero;
         while (actual != null) {
@@ -201,4 +196,18 @@ class Lista {
         }
         return false;
     }
+
+
+    public void contar(int buscar) {
+        int cont = 0;
+        Nodo actual = primero;
+        while (actual != null) {
+            if (actual.cedula == buscar) {
+                cont++;
+            }
+            System.out.println("hay " + cont + " nodos en la lista.");
+
+        }
+    }
 }
+
